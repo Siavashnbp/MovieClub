@@ -2,7 +2,7 @@ using System.Reflection;
 using Microsoft.Data.Sqlite;
 using Microsoft.EntityFrameworkCore;
 
-namespace MovieClub.Test.Tools.Infrustructure.DatabaseConfig.Unit;
+namespace MovieClub.Test.Tools.Infrastructure.DatabaseConfig.Unit;
 
 public class EFInMemoryDatabase : IDisposable
 {

@@ -8,5 +8,6 @@ namespace MovieClub.Entities.Movies
 {
     public class Movie
     {
+        public int Id { get; set; }
     }
 }

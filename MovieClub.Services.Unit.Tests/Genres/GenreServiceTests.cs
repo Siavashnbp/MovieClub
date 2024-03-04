@@ -1,5 +1,8 @@
+using FluentAssertions;
 using MovieClub.Persistence.EF;
-using MovieClub.Test.Tools.Infrustructure.DatabaseConfig.Unit;
+using MovieClub.Services.Genres.Contracts;
+using MovieClub.Test.Tools.Infrastructure.DatabaseConfig.Unit;
+using MovieClub.Test.Tools.Infrastructure.Genres.Factories;
 
 namespace MovieClub.Services.Unit.Tests.Genres
 {
@@ -13,9 +16,18 @@ namespace MovieClub.Services.Unit.Tests.Genres
             _context = _db.CreateDataContext<EFDataContext>();
         }
         [Fact]
-        public void Add_adds_genre_properly()
+        public async Task Add_adds_genre_properly()
         {
+            var readContext = _db.CreateDataContext<EFDataContext>();
 
+            var dto = AddGenreDtoFactory.Create();
+            var sut = GenreServiceFactory.Create(_context);
+
+            await sut.Add(dto);
+
+            var actual = readContext.Genres.Single();
+
+            actual.Name.Should().Be(dto.Name);
         }
     }
 }

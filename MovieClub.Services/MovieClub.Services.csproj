@@ -7,8 +7,12 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Genres\Contracts\Dto\" />
     <Folder Include="Genres\Exceptions\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\MovieClub.Contracts\MovieClub.Contracts.csproj" />
+    <ProjectReference Include="..\MovieClub.Entities\MovieClub.Entities.csproj" />
   </ItemGroup>
 
 </Project>

@@ -10,5 +10,6 @@ namespace MovieClub.Services.Genres.Contracts
     public interface GenreServices
     {
         Task Add(AddGenreDto dto);
+        Task<List<GetGenreResponeDto>> GetAll();
     }
 }

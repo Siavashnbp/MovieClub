@@ -45,5 +45,26 @@ namespace MovieClub.Services.Unit.Tests.Genres
 
             await actual.Should().ThrowExactlyAsync<GenreExistsException>();
         }
+        [Fact]
+        public async Task GetAll_gets_all_genres_properly()
+        {
+            var readContext = _db.CreateDataContext<EFDataContext>();
+
+            var genre1 = new GenreBuilder().GenreWithName("dummy-genre1-name").Build();
+            _context.Save(genre1);
+            var genre2 = new GenreBuilder().GenreWithName("dummy-genre2-name").Build();
+            _context.Save(genre2);
+
+            var sut = GenreServiceFactory.Create(_context);
+
+            var actual = await sut.GetAll();
+
+            actual[0].Id.Should().Be(genre1.Id);
+            actual[0].Name.Should().Be(genre1.Name);
+
+            actual[1].Id.Should().Be(genre2.Id);
+            actual[1].Name.Should().Be(genre2.Name);
+
+        }
     }
 }

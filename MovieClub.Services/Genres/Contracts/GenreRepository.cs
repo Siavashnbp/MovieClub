@@ -6,5 +6,6 @@ namespace MovieClub.Services.Genres.Contracts
     {
         void Add(Genre genre);
         Task<Genre?> FindGenreByName(string name);
+        Task<List<GetGenreResponeDto>> GetAll();
     }
 }

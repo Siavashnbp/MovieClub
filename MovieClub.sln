@@ -24,13 +24,16 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MovieClub.Persistence.EF", 
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "03.Presentation", "03.Presentation", "{C080564A-A909-4304-A69F-1E4BB040FF94}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MovieClub.RestApi", "MovieClub.RestApi\MovieClub.RestApi.csproj", "{904C10EF-E550-4A26-A57A-51E0A01C9ECB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MovieClub.RestApi", "MovieClub.RestApi\MovieClub.RestApi.csproj", "{904C10EF-E550-4A26-A57A-51E0A01C9ECB}"
+	ProjectSection(ProjectDependencies) = postProject
+		{B20F0AB2-4367-4228-8366-9A538D735F8E} = {B20F0AB2-4367-4228-8366-9A538D735F8E}
+	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{9BBFFC65-24CC-49DD-8E26-D9F542415A56}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{30D10A42-2387-4A96-B164-E87E49BAC344}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MovieClub.Test.Tools", "Test.Tools\MovieClub.Test.Tools.csproj", "{BE938254-C7BF-424C-A261-DB4A7DCD0C22}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MovieClub.Test.Tools", "Test.Tools\MovieClub.Test.Tools.csproj", "{BE938254-C7BF-424C-A261-DB4A7DCD0C22}"
 	ProjectSection(ProjectDependencies) = postProject
 		{7A8633F7-4BFB-4550-AF45-016072FDF70C} = {7A8633F7-4BFB-4550-AF45-016072FDF70C}
 		{B20F0AB2-4367-4228-8366-9A538D735F8E} = {B20F0AB2-4367-4228-8366-9A538D735F8E}
@@ -38,7 +41,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MovieClub.Test.Tools", "Tes
 		{F3AF8F5B-52E3-4FCF-9C0C-21DDDD143141} = {F3AF8F5B-52E3-4FCF-9C0C-21DDDD143141}
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MovieClub.Services.Unit.Tests", "MovieClub.Services.Unit.Tests\MovieClub.Services.Unit.Tests.csproj", "{254AED08-59B0-400B-8281-E395A26FDF07}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MovieClub.Services.Unit.Tests", "MovieClub.Services.Unit.Tests\MovieClub.Services.Unit.Tests.csproj", "{254AED08-59B0-400B-8281-E395A26FDF07}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

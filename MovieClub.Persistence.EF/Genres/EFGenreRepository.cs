@@ -15,12 +15,21 @@ namespace MovieClub.Persistence.EF.Genres
 
         public void Add(Genre genre)
         {
-            _db.Add(genre);
+            _db.Genres.Add(genre);
         }
 
         public async Task<Genre?> FindGenreByName(string name)
         {
-            return await _db.Set<Genre>().FirstOrDefaultAsync(_=>_.Name.ToLower() == name.ToLower());
+            return await _db.Genres.FirstOrDefaultAsync(_ => _.Name == name);
+        }
+
+        public async Task<List<GetGenreResponeDto>> GetAll()
+        {
+            return await _db.Genres.Select(_ => new GetGenreResponeDto
+            {
+                Id = _.Id,
+                Name = _.Name
+            }).ToListAsync();
         }
     }
 }

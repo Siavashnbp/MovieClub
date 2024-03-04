@@ -34,5 +34,10 @@ namespace MovieClub.Services.Genres
             _repository.Add(genre);
             await _unitOfWork.Complete();
         }
+
+        public async Task<List<GetGenreResponeDto>> GetAll()
+        {
+            return await _repository.GetAll();
+        }
     }
 }

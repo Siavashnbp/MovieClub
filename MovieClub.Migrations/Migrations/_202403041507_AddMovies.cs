@@ -7,25 +7,23 @@ using System.Threading.Tasks;
 
 namespace MovieClub.Migrations.Migrations
 {
-    [Migration(202403041507)]
-    public class _202403041507_AddMovies : Migration
+    [Migration(202403041545)]
+    public class _202403041545_AddRentInformation : Migration
     {
         public override void Up()
         {
-            Create.Table("Movies")
+            Create.Table("RentInformations")
                 .WithColumn("Id").AsInt32().PrimaryKey().Identity().NotNullable()
-                .WithColumn("Name").AsString().NotNullable()
-                .WithColumn("Description").AsString().NotNullable()
-                .WithColumn("Director").AsString().NotNullable()
-                .WithColumn("AgeRestriction").AsInt16().NotNullable()
-                .WithColumn("GenreId").AsInt32().Nullable();
+                .WithColumn("PricePerDay").AsDecimal().NotNullable()
+                .WithColumn("PenaltyPerDay").AsDecimal().NotNullable()
+                .WithColumn("RentDuration").AsDateTimeOffset().NotNullable();
             Create.ForeignKey()
-                .FromTable("Movies").ForeignColumn("GenreId")
-                .ToTable("Genres").PrimaryColumn("Id");
+                .FromTable("RentInformations").ForeignColumn("Id")
+                .ToTable("Movies").PrimaryColumn("Id");
         }
         public override void Down()
         {
-            Delete.Table("Movies");
+            Delete.Table("RentInformations");
         }
 
     }

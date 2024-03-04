@@ -4,7 +4,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using MovieClub.Services.Genres.Contracts.Dto;
-using MovieClub.Services.Unit.Tests.Genres;
 
 namespace MovieClub.Services.Genres.Contracts
 {

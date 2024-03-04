@@ -1,4 +1,4 @@
-﻿namespace MovieClub.Services.Unit.Tests.Genres
+﻿namespace MovieClub.Services.Genres.Contracts.Dto
 {
     public class UpdateGenreDto
     {

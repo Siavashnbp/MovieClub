@@ -2,6 +2,7 @@
 using MovieClub.Entities.Genres;
 using MovieClub.Services.Genres.Contracts;
 using MovieClub.Services.Genres.Contracts.Dto;
+using MovieClub.Services.Unit.Tests.Genres;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,7 +22,12 @@ namespace MovieClub.Services.Genres
         }
         public async Task Add(AddGenreDto dto)
         {
-            var genre = new Genre
+            var genre = await _repository.FindGenreByName(dto.Name);
+            if (genre is not null)
+            {
+                throw new GenreExistsException();
+            }
+            genre = new Genre
             {
                 Name = dto.Name,
             };

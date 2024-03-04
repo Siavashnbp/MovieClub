@@ -1,4 +1,5 @@
-﻿using MovieClub.Entities.Genres;
+﻿using Microsoft.EntityFrameworkCore;
+using MovieClub.Entities.Genres;
 using MovieClub.Persistence.EF;
 using MovieClub.Services.Genres.Contracts;
 
@@ -15,6 +16,11 @@ namespace MovieClub.Persistence.EF.Genres
         public void Add(Genre genre)
         {
             _db.Add(genre);
+        }
+
+        public async Task<Genre?> FindGenreByName(string name)
+        {
+            return await _db.Set<Genre>().FirstOrDefaultAsync(_=>_.Name.ToLower() == name.ToLower());
         }
     }
 }

@@ -1,7 +1,9 @@
 using FluentAssertions;
+using MovieClub.Entities.Genres;
 using MovieClub.Persistence.EF;
 using MovieClub.Services.Genres.Contracts;
 using MovieClub.Test.Tools.Infrastructure.DatabaseConfig.Unit;
+using MovieClub.Test.Tools.Infrastructure.Genres.Builders;
 using MovieClub.Test.Tools.Infrastructure.Genres.Factories;
 
 namespace MovieClub.Services.Unit.Tests.Genres
@@ -28,6 +30,20 @@ namespace MovieClub.Services.Unit.Tests.Genres
             var actual = readContext.Genres.Single();
 
             actual.Name.Should().Be(dto.Name);
+        }
+        [Fact]
+        public async Task Add_throws_GenreExistsException_on_duplicate_names()
+        {
+            var dto = AddGenreDtoFactory.Create();
+            var sut = GenreServiceFactory.Create(_context);
+
+            var genre = new GenreBuilder().GenreWithName(dto.Name).Build();
+
+            _context.Save(genre);
+
+            var actual = async () => await sut.Add(dto);
+
+            await actual.Should().ThrowExactlyAsync<GenreExistsException>();
         }
     }
 }

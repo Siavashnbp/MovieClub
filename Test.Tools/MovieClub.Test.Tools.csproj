@@ -20,8 +20,4 @@
     <ProjectReference Include="..\MovieClub.Services\MovieClub.Services.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Infrastructure\Genres\Builders\" />
-  </ItemGroup>
-
 </Project>

@@ -5,5 +5,6 @@ namespace MovieClub.Services.Genres.Contracts
     public interface GenreRepository
     {
         void Add(Genre genre);
+        Task<Genre?> FindGenreByName(string name);
     }
 }

@@ -1,4 +1,4 @@
-﻿namespace MovieClub.Services.Genres.Contracts
+﻿namespace MovieClub.Services.Genres.Contracts.Dto
 {
     public class GetGenreResponeDto
     {

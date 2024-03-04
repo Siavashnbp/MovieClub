@@ -22,7 +22,7 @@ namespace MovieClub.Services.Genres
         }
         public async Task Add(AddGenreDto dto)
         {
-            var genre = await _repository.FindGenreByName(dto.Name);
+            var genre = await _repository.FindByName(dto.Name);
             if (genre is not null)
             {
                 throw new GenreExistsException();
@@ -35,9 +35,31 @@ namespace MovieClub.Services.Genres
             await _unitOfWork.Complete();
         }
 
+        public async Task Delete(int id)
+        {
+            var genre = await _repository.FindById(id);
+            if (genre is null)
+            {
+                throw new GenreNotFoundException();
+            }
+            _repository.Delete(genre);
+            await _unitOfWork.Complete();
+        }
+
         public async Task<List<GetGenreResponeDto>> GetAll()
         {
             return await _repository.GetAll();
+        }
+
+        public async Task Update(int id, UpdateGenreDto updateDto)
+        {
+            var genre = await _repository.FindById(id);
+            if (genre is null)
+            {
+                throw new GenreNotFoundException();
+            }
+            genre.Name = updateDto.Name;
+            await _unitOfWork.Complete();
         }
     }
 }

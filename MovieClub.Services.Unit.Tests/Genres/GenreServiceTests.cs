@@ -5,6 +5,7 @@ using MovieClub.Services.Genres.Contracts;
 using MovieClub.Test.Tools.Infrastructure.DatabaseConfig.Unit;
 using MovieClub.Test.Tools.Infrastructure.Genres.Builders;
 using MovieClub.Test.Tools.Infrastructure.Genres.Factories;
+using SQLitePCL;
 
 namespace MovieClub.Services.Unit.Tests.Genres
 {
@@ -64,7 +65,51 @@ namespace MovieClub.Services.Unit.Tests.Genres
 
             actual[1].Id.Should().Be(genre2.Id);
             actual[1].Name.Should().Be(genre2.Name);
+        }
 
+        [Fact]
+        public async Task Delete_deletes_genre_properly()
+        {
+            var readContext = _db.CreateDataContext<EFDataContext>();
+
+            var genre = new GenreBuilder().Build();
+            _context.Save(genre);
+
+            var sut = GenreServiceFactory.Create(_context);
+            await sut.Delete(genre.Id);
+
+            var actual = readContext.Genres.Any();
+
+            actual.Should().BeFalse();
+        }
+
+        [Fact]
+        public async Task Delete_throws_GenreNotFoundException()
+        {
+            var dummyId = 0;
+            var sut = GenreServiceFactory.Create(_context);
+
+            var actual = async () => await sut.Delete(dummyId);
+
+            await actual.Should().ThrowExactlyAsync<GenreNotFoundException>();
+        }
+        [Fact]
+        public async Task Update_updates_genre_properly()
+        {
+            var readContext = _db.CreateDataContext<EFDataContext>();
+
+            var genre = new GenreBuilder().Build();
+            _context.Save(genre);
+
+            var updateDto = UpdateGenreDtoFactory.Create();
+            var sut = GenreServiceFactory.Create(_context);
+
+            await sut.Update(genre.Id, updateDto);
+
+            var actual = readContext.Genres.Single();
+
+            actual.Id.Should().Be(genre.Id);
+            actual.Name.Should().Be(updateDto.Name);
         }
     }
 }

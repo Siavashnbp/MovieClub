@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using MovieClub.Services.Genres.Contracts;
 using MovieClub.Services.Genres.Contracts.Dto;
+using MovieClub.Services.Unit.Tests.Genres;
 
 namespace MovieClub.RestApi.Controllers
 {
@@ -14,9 +15,25 @@ namespace MovieClub.RestApi.Controllers
             _genreServices = genreServices;
         }
         [HttpPost]
-        public void Add(AddGenreDto dto)
+        public async Task Add([FromBody] AddGenreDto dto)
         {
-            _genreServices.Add(dto);
+            await _genreServices.Add(dto);
+        }
+        [HttpGet]
+        public async Task<List<GetGenreResponeDto>> GetAll()
+        {
+            return await _genreServices.GetAll();
+        }
+        [HttpDelete]
+        public async Task Delete(int id)
+        {
+            await _genreServices.Delete(id);
+        }
+        [HttpPut("/{id}")]
+        public async Task Update([FromRoute] int id, [FromBody] UpdateGenreDto dto)
+        {
+            await _genreServices.Update(id, dto);
         }
     }
+
 }

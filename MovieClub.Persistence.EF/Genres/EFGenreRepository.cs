@@ -2,6 +2,7 @@
 using MovieClub.Entities.Genres;
 using MovieClub.Persistence.EF;
 using MovieClub.Services.Genres.Contracts;
+using MovieClub.Services.Genres.Contracts.Dto;
 
 namespace MovieClub.Persistence.EF.Genres
 {
@@ -18,9 +19,19 @@ namespace MovieClub.Persistence.EF.Genres
             _db.Genres.Add(genre);
         }
 
-        public async Task<Genre?> FindGenreByName(string name)
+        public void Delete(Genre genre)
         {
-            return await _db.Genres.FirstOrDefaultAsync(_ => _.Name == name);
+            _db.Remove(genre);
+        }
+
+        public async Task<Genre?> FindById(int id)
+        {
+            return await _db.Genres.FirstOrDefaultAsync(_ => _.Id == id);
+        }
+
+        public async Task<Genre?> FindByName(string name)
+        {
+            return await _db.Genres.FirstOrDefaultAsync(_ => _.Name.ToLower() == name.ToLower());
         }
 
         public async Task<List<GetGenreResponeDto>> GetAll()

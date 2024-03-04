@@ -1,4 +1,4 @@
-namespace MovieClub
+namespace MovieClub.RestApi
 {
     public class WeatherForecast
     {

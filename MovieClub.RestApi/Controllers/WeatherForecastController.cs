@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
+using MovieClub.RestApi;
 
-namespace MovieClub.Controllers
+namespace MovieClub.RestApi.Controllers
 {
     [ApiController]
     [Route("[controller]")]

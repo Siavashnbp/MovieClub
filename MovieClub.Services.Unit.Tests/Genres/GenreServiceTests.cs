@@ -2,6 +2,7 @@ using FluentAssertions;
 using MovieClub.Entities.Genres;
 using MovieClub.Persistence.EF;
 using MovieClub.Services.Genres.Contracts;
+using MovieClub.Services.Genres.Exceptions;
 using MovieClub.Test.Tools.Infrastructure.DatabaseConfig.Unit;
 using MovieClub.Test.Tools.Infrastructure.Genres.Builders;
 using MovieClub.Test.Tools.Infrastructure.Genres.Factories;

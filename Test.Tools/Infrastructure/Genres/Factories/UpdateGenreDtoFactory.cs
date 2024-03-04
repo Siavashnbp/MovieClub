@@ -1,4 +1,6 @@
-﻿namespace MovieClub.Services.Unit.Tests.Genres
+﻿using MovieClub.Services.Genres.Contracts.Dto;
+
+namespace MovieClub.Test.Tools.Infrastructure.Genres.Factories
 {
     public static class UpdateGenreDtoFactory
     {

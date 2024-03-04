@@ -14,7 +14,7 @@ namespace MovieClub.Migrations.Migrations
         public override void Up()
         {
             Create.Table("Genres")
-                .WithColumn("Id").AsInt32().Identity().NotNullable()
+                .WithColumn("Id").AsInt32().PrimaryKey().Identity().NotNullable()
                 .WithColumn("Name").AsString().NotNullable();
 
         }

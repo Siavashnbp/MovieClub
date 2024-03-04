@@ -1,4 +1,4 @@
-﻿namespace MovieClub.Services.Unit.Tests.Genres
+﻿namespace MovieClub.Services.Genres.Exceptions
 {
     public class GenreExistsException : Exception
     {

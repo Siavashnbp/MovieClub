@@ -1,7 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using MovieClub.Services.Genres.Contracts;
 using MovieClub.Services.Genres.Contracts.Dto;
-using MovieClub.Services.Unit.Tests.Genres;
 
 namespace MovieClub.RestApi.Controllers
 {
